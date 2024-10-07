@@ -17,9 +17,12 @@ export const HeroSection = () => {
               Full Stack Developer
             </p>
             <p className="text-base text-gray-600 dark:text-gray-300">
-              I'm a passionate developer with 3 years of experience in creating
-              beautiful and functional web applications. My expertise includes
-              React, Node.js.
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
+              autem optio eligendi, quasi vero dolorem! Aliquid enim magni
+              facere, quisquam veniam quis consequuntur fuga at delectus magnam
+              possimus corporis quo cum nihil, tempora soluta quas a maxime!
+              Perferendis, fugit fugiat. Cupiditate sequi accusantium illo?
+              Maxime necessitatibus accusamus ipsum autem quam.
             </p>
             <div className="flex space-x-4">
               <a
