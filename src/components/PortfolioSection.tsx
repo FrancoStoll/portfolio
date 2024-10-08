@@ -9,12 +9,12 @@ export const PortfolioSection = () => {
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold tracking-tight text-indigo-900 dark:text-indigo-100 sm:text-4xl mb-8">
-          My Portfolio
+          Mis Proyectos
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {[
             {
-              title: "E-commerce Platform",
+              title: "E-commerce",
               description:
                 "Tienda online completa con Next.js y pagos, incluyendo el manejo de carga de datos e imagenes.",
               image: "/assets/shop.png",
@@ -28,7 +28,7 @@ export const PortfolioSection = () => {
               link: "https://lineage-ii.vercel.app/",
             },
             {
-              title: "A catalog of clothes",
+              title: "Catálogo de ropa",
               description:
                 "Un catálogo de ropa que incluye carrito carga de archivos y comuncacion via whatsapp",
               image: "/assets/catalogo.png",
@@ -65,7 +65,7 @@ export const PortfolioSection = () => {
                   href={project.link}
                   className="inline-flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300"
                 >
-                  View Project
+                  Ver Proyecto
                   <ExternalLink className="ml-1 h-4 w-4" />
                 </a>
               </div>
