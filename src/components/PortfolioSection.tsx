@@ -16,7 +16,7 @@ export const PortfolioSection = () => {
             {
               title: "E-commerce Platform",
               description:
-                "Una solución de comercio electrónico completa con Next.js y pagos, incluyendo el manejo de carga de datos e imagenes.",
+                "Tienda online completa con Next.js y pagos, incluyendo el manejo de carga de datos e imagenes.",
               image: "/assets/shop.png",
               link: "https://teslo-shop-sable.vercel.app/",
             },
