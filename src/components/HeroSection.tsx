@@ -14,15 +14,15 @@ export const HeroSection = () => {
               Franco Stoll
             </h1>
             <p className="text-xl text-indigo-600 dark:text-indigo-400 sm:text-2xl">
-              Full Stack Developer
+              Desarrolador Web
             </p>
             <p className="text-base text-gray-600 dark:text-gray-300">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque
-              autem optio eligendi, quasi vero dolorem! Aliquid enim magni
-              facere, quisquam veniam quis consequuntur fuga at delectus magnam
-              possimus corporis quo cum nihil, tempora soluta quas a maxime!
-              Perferendis, fugit fugiat. Cupiditate sequi accusantium illo?
-              Maxime necessitatibus accusamus ipsum autem quam.
+              Soy un desarrollador en constante aprendizaje, con 2 años de
+              experiencia en el estudio y desarrollo de aplicaciones web. Me
+              enfoco en el frontend, utilizando React y Next.js para crear
+              interfaces modernas y eficientes. También tengo experiencia en el
+              backend con Node.js y Express, y estoy buscando mi primera
+              oportunidad para aplicar estos conocimientos en el mundo IT.
             </p>
             <div className="flex space-x-4">
               <a

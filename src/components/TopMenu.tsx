@@ -1,19 +1,41 @@
 "use client";
 
-import { Menu, Moon, Sun, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { Menu, Moon, Sun, X } from "lucide-react";
+import { useTheme } from "next-themes";
+import { cn } from "@/lib/utils";
 
 export const TopMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(true);
+  const { theme, setTheme } = useTheme();
+  const [activeSection, setActiveSection] = useState<string>("");
 
   useEffect(() => {
-    if (isDarkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDarkMode]);
+    const sections = document.querySelectorAll("section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      {
+        threshold: 0.4,
+      }
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+
+    return () => {
+      sections.forEach((section) => {
+        observer.unobserve(section);
+      });
+    };
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -21,9 +43,6 @@ export const TopMenu = () => {
       section.scrollIntoView({ behavior: "smooth" });
     }
     setIsMenuOpen(false);
-  };
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
   };
 
   return (
@@ -38,40 +57,57 @@ export const TopMenu = () => {
           <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
             <button
               onClick={() => scrollToSection("about")}
-              className="items-center px-1 pt-1 text-sm font-medium text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400"
+              className={`items-center px-1 pt-1 text-sm font-medium border-b-2 ${
+                activeSection === "about"
+                  ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400"
+                  : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
+              }`}
             >
-              About
+              Inicio
             </button>
             <button
               onClick={() => scrollToSection("portfolio")}
-              className="items-center px-1 pt-1 text-sm font-medium text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-b-2 border-transparent"
+              className={`items-center px-1 pt-1 text-sm font-medium border-b-2 ${
+                activeSection === "portfolio"
+                  ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400"
+                  : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
+              }`}
             >
               Portfolio
             </button>
             <button
               onClick={() => scrollToSection("timeline")}
-              className="items-center px-1 pt-1 text-sm font-medium text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-b-2 border-transparent"
+              className={`items-center px-1 pt-1 text-sm font-medium border-b-2 ${
+                activeSection === "timeline"
+                  ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400"
+                  : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
+              }`}
             >
               Timeline
             </button>
             <button
               onClick={() => scrollToSection("contact")}
-              className="items-center px-1 pt-1 text-sm font-medium text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-b-2 border-transparent"
+              className={`items-center px-1 pt-1 text-sm font-medium border-b-2 ${
+                activeSection === "contact"
+                  ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400"
+                  : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
+              }`}
             >
-              Contact
+              Contacto
             </button>
           </div>
           <div className="flex items-center">
             <button
-              onClick={toggleDarkMode}
+              onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
             >
-              {isDarkMode ? (
+              {theme ? (
                 <Sun className="h-5 w-5" />
               ) : (
                 <Moon className="h-5 w-5" />
               )}
             </button>
+
             <div className="-mr-2 flex items-center sm:hidden">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -93,27 +129,47 @@ export const TopMenu = () => {
           <div className="pt-2 pb-3 space-y-1">
             <button
               onClick={() => scrollToSection("about")}
-              className="block pl-3 pr-4 py-2 text-base font-medium text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-900 border-l-4 border-indigo-600 dark:border-indigo-400 w-full text-left"
+              className={cn(
+                "block pl-3 pr-4 py-2 text-base font-medium w-full text-left",
+                activeSection === "about"
+                  ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400 border-l-4 bg-indigo-50 dark:bg-indigo-900"
+                  : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
+              )}
             >
-              About
+              Inicio
             </button>
             <button
               onClick={() => scrollToSection("portfolio")}
-              className="block pl-3 pr-4 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900 hover:border-indigo-300 border-l-4 border-transparent w-full text-left"
+              className={cn(
+                "block pl-3 pr-4 py-2 text-base font-medium w-full text-left",
+                activeSection === "portfolio"
+                  ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400 border-l-4 bg-indigo-50 dark:bg-indigo-900"
+                  : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
+              )}
             >
               Portfolio
             </button>
             <button
               onClick={() => scrollToSection("timeline")}
-              className="block pl-3 pr-4 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900 hover:border-indigo-300 border-l-4 border-transparent w-full text-left"
+              className={cn(
+                "block pl-3 pr-4 py-2 text-base font-medium w-full text-left",
+                activeSection === "timeline"
+                  ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400 border-l-4 bg-indigo-50 dark:bg-indigo-900"
+                  : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
+              )}
             >
               Timeline
             </button>
             <button
               onClick={() => scrollToSection("contact")}
-              className="block pl-3 pr-4 py-2 text-base font-medium text-gray-600 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900 hover:border-indigo-300 border-l-4 border-transparent w-full text-left"
+              className={cn(
+                "block pl-3 pr-4 py-2 text-base font-medium w-full text-left",
+                activeSection === "contact"
+                  ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400 border-l-4 bg-indigo-50 dark:bg-indigo-900"
+                  : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
+              )}
             >
-              Contact
+              Contacto
             </button>
           </div>
         </div>

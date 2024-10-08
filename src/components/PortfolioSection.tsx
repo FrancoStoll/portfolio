@@ -16,26 +16,28 @@ export const PortfolioSection = () => {
             {
               title: "E-commerce Platform",
               description:
-                "A full-stack e-commerce solution with Next.js and payments",
+                "Una solución de comercio electrónico completa con Next.js y pagos, incluyendo el manejo de carga de datos e imagenes.",
               image: "/assets/shop.png",
               link: "https://teslo-shop-sable.vercel.app/",
             },
             {
               title: "Lineage II Game - Website",
-              description: "A website for server of lineage II game",
+              description:
+                "Una página web para el servidor del juego Lineage II",
               image: "/assets/l2.png",
               link: "https://lineage-ii.vercel.app/",
             },
             {
               title: "A catalog of clothes",
-              description: "A catalog of clothes and using Whatsapp api",
+              description:
+                "Un catálogo de ropa que incluye carrito carga de archivos y comuncacion via whatsapp",
               image: "/assets/catalogo.png",
               link: "https://catalogo-snowy.vercel.app/",
             },
             {
               title: "Pokedex",
               description:
-                "Pokedex is a website that allows you to search for Pokemon and view their stats",
+                "Pokedex es una página web que te permite buscar Pokemon y ver sus estadísticas",
               image: "/assets/pokemon.png",
               link: "https://pokemon-drab-beta.vercel.app/",
             },

@@ -6,27 +6,27 @@ export const TimeLine = () => {
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="text-3xl font-bold tracking-tight text-indigo-900 dark:text-indigo-100 sm:text-4xl mb-8">
-          Work Timeline
+          Timeline
         </h2>
         <div className="space-y-8">
           {[
             {
               year: "2024",
-              title: "Lorem ipsum dolor sit amet",
+              title: "Aprendizaje de Next.js, React Native y TypeScript",
               description:
-                "Nisl fusce dis mattis facilisis arcu dictumst ridiculus integer diam, quam vel metus gravida varius tempor feugiat orci. ",
+                "En 2024, comencé a profundizar en Next.js, React Native y TypeScript, mejorando mis habilidades en el desarrollo full-stack.",
             },
             {
               year: "2023",
-              title: "Lorem ipsum dolor sit amet",
+              title: "Introducción a JavaScript, React y Node.js",
               description:
-                "Nisl fusce dis mattis facilisis arcu dictumst ridiculus integer diam, quam vel metus gravida varius tempor feugiat orci. ",
+                "En 2023, empecé a aprender JavaScript, React y comencé a explorar Node.js, ampliando mis conocimientos en desarrollo web.",
             },
             {
               year: "2022 - 2023",
-              title: "Lorem ipsum dolor sit amet",
+              title: "Introducción a HTML, CSS y PHP",
               description:
-                "Nisl fusce dis mattis facilisis arcu dictumst ridiculus integer diam, quam vel metus gravida varius tempor feugiat orci. ",
+                "Durante 2022 y 2023, me introduje a HTML, CSS y PHP, formando la base de mis habilidades en desarrollo web.",
             },
           ].map((item, index) => (
             <div

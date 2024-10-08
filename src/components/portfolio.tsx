@@ -22,7 +22,7 @@ export default function Portfolio() {
       <TimeLine />
 
       {/* Footer */}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 }
