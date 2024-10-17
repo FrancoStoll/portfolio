@@ -14,6 +14,13 @@ export const PortfolioSection = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
           {[
             {
+              title: "PerfilYa (Beta)",
+              description:
+                "Es una web donde cada usuario puede crear un perfil personalizado con productos y servicios que le gustaría compartir con sus clientes, Utiliza Next.js, Postgres y Drizzle ORM",
+              image: "/assets/perfilya.png",
+              link: "https://github.com/FrancoStoll/your-page",
+            },
+            {
               title: "E-commerce",
               description:
                 "Tienda online completa con Next.js y pagos, incluyendo el manejo de carga de datos e imagenes.",
@@ -62,6 +69,7 @@ export const PortfolioSection = () => {
                   {project.description}
                 </p>
                 <a
+                target="_blank"
                   href={project.link}
                   className="inline-flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300"
                 >
