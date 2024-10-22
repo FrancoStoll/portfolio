@@ -21,8 +21,7 @@ export const HeroSection = () => {
               experiencia en el estudio y desarrollo de aplicaciones web. Me
               enfoco en el frontend, utilizando React y Next.js para crear
               interfaces modernas y eficientes. También tengo experiencia en el
-              backend con Node.js y Express, y estoy buscando mi primera
-              oportunidad para aplicar estos conocimientos en el mundo IT.
+              backend con Node.js y Express.
             </p>
             <div className="flex space-x-4">
               <a
