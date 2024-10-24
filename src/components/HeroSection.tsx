@@ -53,7 +53,10 @@ export const HeroSection = () => {
           <div className="flex justify-center lg:justify-end">
             <div className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64">
               <Image
-                src="/assets/react.jpeg"
+                src={
+                  "https://media.licdn.com/dms/image/v2/D4D03AQG9-7zC_8QB_Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1690391817597?e=1735171200&v=beta&t=AF9doY5NVUT_Is3MOrEjEHKUyVYkQjXjjV2mfwRzaWA"
+                }
+                // src="/assets/react.jpeg"
                 // src="https://media.licdn.com/dms/image/v2/D4E35AQG3n8TotoKlXw/profile-framedphoto-shrink_200_200/profile-framedphoto-shrink_200_200/0/1705417578300?e=1728885600&v=beta&t=WwGbyRKHoloUzPEjJbxoE-KsKeAuMeflTK6I_hoXMGY"
                 alt="profile franco stoll"
                 layout="fill"
