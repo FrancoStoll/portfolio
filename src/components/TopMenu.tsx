@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Menu, Moon, Sun, X } from "lucide-react";
 import { useTheme } from "next-themes";
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion"; // Importamos Framer Motion
 
 export const TopMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -55,63 +56,74 @@ export const TopMenu = () => {
             </span>
           </div>
           <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
-            <button
+            {/* Animamos los botones */}
+            <motion.button
               onClick={() => scrollToSection("about")}
               className={`items-center px-1 pt-1 text-sm font-medium border-b-2 ${
                 activeSection === "about"
                   ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400"
                   : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
               }`}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               Inicio
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={() => scrollToSection("portfolio")}
               className={`items-center px-1 pt-1 text-sm font-medium border-b-2 ${
                 activeSection === "portfolio"
                   ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400"
                   : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
               }`}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               Portfolio
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={() => scrollToSection("timeline")}
               className={`items-center px-1 pt-1 text-sm font-medium border-b-2 ${
                 activeSection === "timeline"
                   ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400"
                   : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
               }`}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               Timeline
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={() => scrollToSection("contact")}
               className={`items-center px-1 pt-1 text-sm font-medium border-b-2 ${
                 activeSection === "contact"
                   ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400"
                   : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
               }`}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               Contacto
-            </button>
+            </motion.button>
           </div>
           <div className="flex items-center">
-            <button
+            <motion.button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              whileTap={{ scale: 0.9 }}
             >
               {theme ? (
                 <Sun className="h-5 w-5" />
               ) : (
                 <Moon className="h-5 w-5" />
               )}
-            </button>
+            </motion.button>
 
             <div className="-mr-2 flex items-center sm:hidden">
-              <button
+              <motion.button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="inline-flex items-center justify-center p-2 rounded-md text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-800 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                whileTap={{ scale: 0.9 }}
               >
                 <span className="sr-only">Open main menu</span>
                 {isMenuOpen ? (
@@ -119,15 +131,23 @@ export const TopMenu = () => {
                 ) : (
                   <Menu className="block h-6 w-6" aria-hidden="true" />
                 )}
-              </button>
+              </motion.button>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Menú desplegable animado */}
       {isMenuOpen && (
-        <div className="sm:hidden">
+        <motion.div
+          className="sm:hidden"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.3 }}
+        >
           <div className="pt-2 pb-3 space-y-1">
-            <button
+            <motion.button
               onClick={() => scrollToSection("about")}
               className={cn(
                 "block pl-3 pr-4 py-2 text-base font-medium w-full text-left",
@@ -135,10 +155,12 @@ export const TopMenu = () => {
                   ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400 border-l-4 bg-indigo-50 dark:bg-indigo-900"
                   : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
               )}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               Inicio
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={() => scrollToSection("portfolio")}
               className={cn(
                 "block pl-3 pr-4 py-2 text-base font-medium w-full text-left",
@@ -146,10 +168,12 @@ export const TopMenu = () => {
                   ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400 border-l-4 bg-indigo-50 dark:bg-indigo-900"
                   : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
               )}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               Portfolio
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={() => scrollToSection("timeline")}
               className={cn(
                 "block pl-3 pr-4 py-2 text-base font-medium w-full text-left",
@@ -157,10 +181,12 @@ export const TopMenu = () => {
                   ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400 border-l-4 bg-indigo-50 dark:bg-indigo-900"
                   : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
               )}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               Timeline
-            </button>
-            <button
+            </motion.button>
+            <motion.button
               onClick={() => scrollToSection("contact")}
               className={cn(
                 "block pl-3 pr-4 py-2 text-base font-medium w-full text-left",
@@ -168,11 +194,13 @@ export const TopMenu = () => {
                   ? "text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400 border-l-4 bg-indigo-50 dark:bg-indigo-900"
                   : "text-gray-500 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400 hover:border-indigo-300 border-transparent"
               )}
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300 }}
             >
               Contacto
-            </button>
+            </motion.button>
           </div>
-        </div>
+        </motion.div>
       )}
     </nav>
   );

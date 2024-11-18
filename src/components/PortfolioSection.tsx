@@ -1,5 +1,6 @@
 import { ExternalLink } from "lucide-react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export const PortfolioSection = () => {
   return (
@@ -49,14 +50,18 @@ export const PortfolioSection = () => {
               link: "https://pokemon-drab-beta.vercel.app/",
             },
           ].map((project, index) => (
-            <div
+            <motion.div
               key={index}
               className="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ delay: index * 0.2, duration: 0.5 }}
+              viewport={{once: true, amount: 0.2}}
             >
               <div className="relative h-48">
                 <Image
                   src={project.image}
-                  alt={project.title}
+                  alt={`Imagen del proyecto ${project.title}`}
                   layout="fill"
                   objectFit="cover"
                 />
@@ -69,7 +74,8 @@ export const PortfolioSection = () => {
                   {project.description}
                 </p>
                 <a
-                target="_blank"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   href={project.link}
                   className="inline-flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300"
                 >
@@ -77,7 +83,7 @@ export const PortfolioSection = () => {
                   <ExternalLink className="ml-1 h-4 w-4" />
                 </a>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

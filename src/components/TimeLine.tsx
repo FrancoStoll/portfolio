@@ -1,3 +1,5 @@
+import { motion, useInView } from "framer-motion";
+
 export const TimeLine = () => {
   return (
     <section
@@ -29,9 +31,13 @@ export const TimeLine = () => {
                 "Durante 2022 y 2023, me introduje a HTML, CSS y PHP, formando la base de mis habilidades en desarrollo web.",
             },
           ].map((item, index) => (
-            <div
+            <motion.div
               key={index}
               className="flex flex-col md:flex-row md:items-baseline"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}  // Animación cuando el elemento entra en vista
+              viewport={{ once: true, amount: 0.2 }}  // Solo se activa cuando el 20% del elemento está en vista
+              transition={{ delay: index * 0.2, duration: 0.6 }}
             >
               <div className="flex-none w-full md:w-32 text-lg font-semibold text-indigo-600 dark:text-indigo-400 mb-1 md:mb-0">
                 {item.year}
@@ -44,7 +50,7 @@ export const TimeLine = () => {
                   {item.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>
