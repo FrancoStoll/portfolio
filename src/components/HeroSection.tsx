@@ -99,7 +99,7 @@ export const HeroSection = () => {
               >
                 <Image
                   src={
-                    "https://media.licdn.com/dms/image/v2/D4D03AQG9-7zC_8QB_Q/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1690391817597?e=1735171200&v=beta&t=AF9doY5NVUT_Is3MOrEjEHKUyVYkQjXjjV2mfwRzaWA"
+                    "/assets/perfil.jpg"
                   }
                   alt="profile franco stoll"
                   width={400}
