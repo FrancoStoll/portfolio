@@ -29,6 +29,13 @@ export const PortfolioSection = () => {
               link: "https://teslo-shop-sable.vercel.app/",
             },
             {
+              title: "Nutriplan",
+              description:
+                "Nutriplan es una app que ofrece planes adecuados para el objetivo del cliente, usa React en el front-end y Nest.js en el back-end con manejos de pdf y envios por email.",
+              image: "/assets/nutriplan.png",
+              link: "https://github.com/FrancoStoll/nutriplan-backend-nest",
+            },
+            {
               title: "Lineage II Game - Website",
               description:
                 "Una página web para el servidor del juego Lineage II",
