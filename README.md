@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio — Franco Stoll
 
-## Getting Started
+Portfolio personal de **Franco Stoll**, desarrollador Full Stack especializado en
+React, Next.js y Node.js. Diseño limpio y moderno, con modo claro/oscuro,
+animaciones sutiles y enfoque en rendimiento y accesibilidad.
 
-First, run the development server:
+🔗 **En vivo:** https://francostoll.vercel.app
+
+## ✨ Características
+
+- Diseño elegante y responsive (mobile-first)
+- Modo claro y oscuro con `next-themes`
+- Animaciones con Framer Motion (respeta `prefers-reduced-motion`)
+- Navegación con scroll-spy y scroll suave
+- SEO optimizado: Open Graph, Twitter Cards y metadatos
+- Tipografía Geist y sistema de diseño con tokens HSL
+
+## 🛠️ Stack
+
+| Categoría   | Tecnologías                          |
+| ----------- | ------------------------------------ |
+| Framework   | Next.js 14 (App Router), React 18    |
+| Lenguaje    | TypeScript                           |
+| Estilos     | Tailwind CSS                         |
+| Animaciones | Framer Motion                        |
+| Iconos      | lucide-react                         |
+| Despliegue  | Vercel                               |
+
+## 🚀 Desarrollo
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install      # instalar dependencias
+npm run dev      # servidor de desarrollo en http://localhost:3000
+npm run build    # build de producción
+npm run start    # servir el build de producción
+npm run lint     # análisis estático
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📁 Estructura
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+src/
+├── app/                # App Router, layout, estilos globales y metadatos
+└── components/
+    ├── TopMenu.tsx         # Navbar con scroll-spy y toggle de tema
+    ├── HeroSection.tsx     # Presentación principal
+    ├── Skills.tsx          # Stack de tecnologías
+    ├── PortfolioSection.tsx# Proyectos
+    ├── TimeLine.tsx        # Experiencia / recorrido
+    ├── Footer.tsx          # Contacto
+    ├── SectionHeading.tsx  # Encabezado de sección reutilizable
+    └── Reveal.tsx          # Wrapper de animación al hacer scroll
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📬 Contacto
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Email:** francostoll@gmail.com
+- **GitHub:** [@FrancoStoll](https://github.com/FrancoStoll)
+- **LinkedIn:** [Franco Stoll](https://www.linkedin.com/in/francostoll/)

@@ -1,96 +1,147 @@
-import { ExternalLink } from "lucide-react";
+"use client";
+
+import { ArrowUpRight, Github } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { SectionHeading } from "./SectionHeading";
+
+type Project = {
+  title: string;
+  description: string;
+  image: string;
+  tags: string[];
+  demo?: string;
+  code?: string;
+};
+
+const PROJECTS: Project[] = [
+  {
+    title: "PerfilYa",
+    description:
+      "Plataforma donde cada usuario crea un perfil personalizado para mostrar sus productos y servicios a clientes.",
+    image: "/assets/perfilya.png",
+    tags: ["Next.js", "PostgreSQL", "Drizzle ORM"],
+    code: "https://github.com/FrancoStoll/your-page",
+  },
+  {
+    title: "Teslo · E-commerce",
+    description:
+      "Tienda online completa con pasarela de pagos, gestión de productos y carga de imágenes.",
+    image: "/assets/shop.png",
+    tags: ["Next.js", "E-commerce", "Pagos"],
+    demo: "https://teslo-shop-sable.vercel.app/",
+  },
+  {
+    title: "Nutriplan",
+    description:
+      "App de planes nutricionales según el objetivo del cliente, con generación de PDF y envío por email.",
+    image: "/assets/nutriplan.png",
+    tags: ["React", "Nest.js", "PDF", "Email"],
+    code: "https://github.com/FrancoStoll/nutriplan-backend-nest",
+  },
+  {
+    title: "Lineage II",
+    description:
+      "Sitio web para el servidor del juego Lineage II, con información, registro y novedades.",
+    image: "/assets/l2.png",
+    tags: ["Next.js", "Landing"],
+    demo: "https://lineage-ii.vercel.app/",
+  },
+  {
+    title: "Catálogo de ropa",
+    description:
+      "Catálogo online con carrito de compras, carga de archivos y comunicación directa vía WhatsApp.",
+    image: "/assets/catalogo.png",
+    tags: ["React", "Carrito", "WhatsApp"],
+    demo: "https://catalogo-snowy.vercel.app/",
+  },
+  {
+    title: "Pokédex",
+    description:
+      "Aplicación para buscar Pokémon y consultar sus estadísticas, consumiendo la PokéAPI.",
+    image: "/assets/pokemon.png",
+    tags: ["React", "PokéAPI"],
+    demo: "https://pokemon-drab-beta.vercel.app/",
+  },
+];
 
 export const PortfolioSection = () => {
   return (
-    <section
-      id="portfolio"
-      className="py-16 bg-gradient-to-br from-indigo-50 to-purple-100 dark:from-gray-800 dark:to-indigo-900 transition-colors duration-300"
-    >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold tracking-tight text-indigo-900 dark:text-indigo-100 sm:text-4xl mb-8">
-          Mis Proyectos
-        </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-          {[
-            {
-              title: "PerfilYa (Beta)",
-              description:
-                "Es una web donde cada usuario puede crear un perfil personalizado con productos y servicios que le gustaría compartir con sus clientes, Utiliza Next.js, Postgres y Drizzle ORM",
-              image: "/assets/perfilya.png",
-              link: "https://github.com/FrancoStoll/your-page",
-            },
-            {
-              title: "E-commerce",
-              description:
-                "Tienda online completa con Next.js y pagos, incluyendo el manejo de carga de datos e imagenes.",
-              image: "/assets/shop.png",
-              link: "https://teslo-shop-sable.vercel.app/",
-            },
-            {
-              title: "Nutriplan",
-              description:
-                "Nutriplan es una app que ofrece planes adecuados para el objetivo del cliente, usa React en el front-end y Nest.js en el back-end con manejos de pdf y envios por email.",
-              image: "/assets/nutriplan.png",
-              link: "https://github.com/FrancoStoll/nutriplan-backend-nest",
-            },
-            {
-              title: "Lineage II Game - Website",
-              description:
-                "Una página web para el servidor del juego Lineage II",
-              image: "/assets/l2.png",
-              link: "https://lineage-ii.vercel.app/",
-            },
-            {
-              title: "Catálogo de ropa",
-              description:
-                "Un catálogo de ropa que incluye carrito carga de archivos y comuncacion via whatsapp",
-              image: "/assets/catalogo.png",
-              link: "https://catalogo-snowy.vercel.app/",
-            },
-            {
-              title: "Pokedex",
-              description:
-                "Pokedex es una página web que te permite buscar Pokemon y ver sus estadísticas",
-              image: "/assets/pokemon.png",
-              link: "https://pokemon-drab-beta.vercel.app/",
-            },
-          ].map((project, index) => (
-            <motion.div
-              key={index}
-              className="bg-white dark:bg-gray-700 rounded-lg shadow-md overflow-hidden flex flex-col transition-transform duration-300 hover:scale-105"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: index * 0.2, duration: 0.5 }}
-              viewport={{once: true, amount: 0.2}}
+    <section id="projects" className="border-t border-border/60 py-24 sm:py-28">
+      <div className="container">
+        <SectionHeading
+          index="02"
+          eyebrow="Proyectos"
+          title="Trabajos seleccionados"
+          description="Una muestra de productos que diseñé y construí, desde landings hasta aplicaciones full stack."
+        />
+
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {PROJECTS.map((project, index) => (
+            <motion.article
+              key={project.title}
+              className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-xl hover:shadow-primary/5"
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ delay: (index % 3) * 0.1, duration: 0.5 }}
             >
-              <div className="relative h-48">
+              <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
                   src={project.image}
-                  alt={`Imagen del proyecto ${project.title}`}
-                  layout="fill"
-                  objectFit="cover"
+                  alt={`Captura de ${project.title}`}
+                  fill
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
-              <div className="p-6 flex flex-col flex-grow bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-gray-700 dark:to-indigo-900">
-                <h3 className="text-xl font-semibold mb-2 text-indigo-900 dark:text-indigo-200 line-clamp-1">
+
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="text-lg font-semibold text-foreground">
                   {project.title}
                 </h3>
-                <p className="text-sm text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">
                   {project.description}
                 </p>
-                <a
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  href={project.link}
-                  className="inline-flex items-center text-sm font-medium text-indigo-600 dark:text-indigo-400 hover:text-indigo-500 dark:hover:text-indigo-300"
-                >
-                  Ver Proyecto
-                  <ExternalLink className="ml-1 h-4 w-4" />
-                </a>
+
+                <ul className="mt-4 flex flex-wrap gap-1.5">
+                  {project.tags.map((tag) => (
+                    <li
+                      key={tag}
+                      className="rounded-md bg-secondary px-2 py-0.5 font-mono text-xs text-muted-foreground"
+                    >
+                      {tag}
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-5 flex items-center gap-3 border-t border-border pt-4">
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-primary transition-colors hover:text-foreground"
+                    >
+                      Ver demo
+                      <ArrowUpRight className="h-4 w-4" />
+                    </a>
+                  )}
+                  {project.code && (
+                    <a
+                      href={project.code}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+                    >
+                      <Github className="h-4 w-4" />
+                      Código
+                    </a>
+                  )}
+                </div>
               </div>
-            </motion.div>
+            </motion.article>
           ))}
         </div>
       </div>

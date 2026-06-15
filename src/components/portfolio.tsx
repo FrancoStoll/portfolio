@@ -2,26 +2,21 @@
 
 import { TopMenu } from "./TopMenu";
 import { HeroSection } from "./HeroSection";
+import { Skills } from "./Skills";
 import { PortfolioSection } from "./PortfolioSection";
 import { TimeLine } from "./TimeLine";
 import { Footer } from "./Footer";
 
 export default function Portfolio() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-100 dark:from-gray-900 dark:to-indigo-900 transition-colors duration-300 ">
-      {/* Top Menu */}
+    <div className="min-h-screen bg-background text-foreground">
       <TopMenu />
-
-      {/* Hero Section */}
-      <HeroSection />
-
-      {/* Portfolio Section */}
-
-      <PortfolioSection />
-      {/* Timeline Section */}
-      <TimeLine />
-
-      {/* Footer */}
+      <main>
+        <HeroSection />
+        <Skills />
+        <PortfolioSection />
+        <TimeLine />
+      </main>
       <Footer />
     </div>
   );

@@ -1,114 +1,146 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+"use client";
+
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+
+const SOCIALS = [
+  { href: "https://github.com/francostoll", label: "GitHub", Icon: Github },
+  {
+    href: "https://www.linkedin.com/in/francostoll/",
+    label: "LinkedIn",
+    Icon: Linkedin,
+  },
+  { href: "mailto:francostoll@gmail.com", label: "Email", Icon: Mail },
+];
+
+const STATS = [
+  { value: "+3", label: "Años construyendo" },
+  { value: "6+", label: "Proyectos enviados" },
+  { value: "Full Stack", label: "Frontend & Backend" },
+];
+
+const scrollTo = (id: string) =>
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
 export const HeroSection = () => {
   return (
     <section
-      id="about"
-      className="bg-white dark:bg-gray-800 py-12 transition-colors duration-300"
+      id="home"
+      className="relative overflow-hidden"
     >
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-16 items-center">
+      {/* Fondo: grilla + resplandor */}
+      <div className="pointer-events-none absolute inset-0 grid-bg" aria-hidden />
+      <div
+        className="pointer-events-none absolute left-1/2 top-0 -z-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]"
+        aria-hidden
+      />
+
+      <div className="container relative flex min-h-[calc(100svh-4rem)] flex-col justify-center py-16">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.4fr_1fr]">
           <motion.div
-            className="space-y-4"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: [0.21, 0.47, 0.32, 0.98] }}
           >
-            <h1 className="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl text-indigo-900 dark:text-indigo-100">
-              Franco Stoll
+            <span className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/60 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-500 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
+              </span>
+              Disponible para nuevos proyectos
+            </span>
+
+            <h1 className="mt-6 text-balance text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
+              Hola, soy{" "}
+              <span className="gradient-text">Franco Stoll</span>
             </h1>
-            <p className="text-xl text-indigo-600 dark:text-indigo-400 sm:text-2xl">
-              Desarrollador Web
+
+            <p className="mt-4 text-xl font-medium text-muted-foreground sm:text-2xl">
+              Desarrollador Full Stack
             </p>
-            <p className="text-base text-gray-600 dark:text-gray-300">
-              Soy un desarrollador en constante aprendizaje, con 2 años de
-              experiencia en el estudio y desarrollo de aplicaciones web. Me
-              enfoco en el frontend, utilizando React y Next.js para crear
-              interfaces modernas y eficientes. También tengo experiencia en el
-              backend con Node.js y Express.
+
+            <p className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-muted-foreground">
+              Construyo productos web rápidos, accesibles y bien diseñados.
+              Especializado en el frontend con{" "}
+              <span className="font-medium text-foreground">React</span> y{" "}
+              <span className="font-medium text-foreground">Next.js</span>, y con
+              experiencia en backend usando{" "}
+              <span className="font-medium text-foreground">Node.js</span>,{" "}
+              <span className="font-medium text-foreground">Nest.js</span> y
+              bases de datos SQL.
             </p>
-            <div className="flex space-x-4">
-              <motion.a
-                href="https://github.com/francostoll"
-                className="text-indigo-400 hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-200 transition-colors duration-200"
-                initial={{ opacity: 0 }}
-                whileHover={{
-                  scale: 1.6,
-                  rotate: 360,
-                }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.4, type: "spring" }}
+
+            <div className="mt-8 flex flex-wrap items-center gap-3">
+              <button
+                onClick={() => scrollTo("contact")}
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:glow-accent"
               >
-                <span className="sr-only">GitHub</span>
-                <Github className="h-6 w-6" />
-              </motion.a>
-              <motion.a
-                href="https://www.linkedin.com/in/francostoll/"
-                className="text-indigo-400 hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-200 transition-colors duration-200"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                whileHover={{
-                  scale: 1.6,
-                  rotate: 360,
-                }}
-                transition={{ duration: 1, delay: 0.4, type: "spring" }}
+                <Mail className="h-4 w-4" />
+                Contáctame
+              </button>
+              <button
+                onClick={() => scrollTo("projects")}
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/40 px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
               >
-                <span className="sr-only">LinkedIn</span>
-                <Linkedin className="h-6 w-6" />
-              </motion.a>
-              <motion.a
-                href="mailto:francostoll@gmail.com"
-                className="text-indigo-400 hover:text-indigo-500 dark:text-indigo-300 dark:hover:text-indigo-200 transition-colors duration-200"
-                initial={{ opacity: 0 }}
-                whileHover={{
-                  scale: 1.6,
-                  rotate: 360,
-                }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.4, type: "spring" }}
-              >
-                <span className="sr-only">Email</span>
-                <Mail className="h-6 w-6" />
-              </motion.a>
+                Ver proyectos
+                <ArrowDown className="h-4 w-4" />
+              </button>
+
+              <div className="ml-1 flex items-center gap-1">
+                {SOCIALS.map(({ href, label, Icon }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={label}
+                    className="grid h-10 w-10 place-items-center rounded-full border border-border text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-foreground"
+                  >
+                    <Icon className="h-[18px] w-[18px]" />
+                  </a>
+                ))}
+              </div>
             </div>
+
+            <dl className="mt-12 grid max-w-md grid-cols-3 gap-6 border-t border-border pt-6">
+              {STATS.map((stat) => (
+                <div key={stat.label}>
+                  <dt className="sr-only">{stat.label}</dt>
+                  <dd className="text-2xl font-bold text-foreground">
+                    {stat.value}
+                  </dd>
+                  <span className="text-xs text-muted-foreground">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </dl>
           </motion.div>
 
-          <div className="flex justify-center lg:justify-end">
-            <motion.div
-              className="relative w-48 h-48 sm:w-56 sm:h-56 lg:w-64 lg:h-64 rounded-full"
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 1 }}
-            >
-              <motion.div
-                animate={{
-                  boxShadow: [
-                    "0 0 10px rgba(75, 29, 134, 1)", // Sombra pequeña al inicio
-                    "0 0 50px rgba(75, 29, 134, 1)", // Sombra expandida
-                    "0 0 10px rgba(75, 29, 134, 1)", // Vuelve a la sombra pequeña
-                  ],
-                }}
-                className="rounded-full shadow-xl"
-                transition={{
-                  duration: 2, // Duración de la animación (expansión + contracción)
-                  repeat: Infinity, // Repite la animación infinitamente
-                  repeatType: "loop", // Tipo de repetición
-                }}
-              >
+          <motion.div
+            className="flex justify-center lg:justify-end"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.7, delay: 0.15 }}
+          >
+            <div className="relative">
+              <div
+                className="absolute -inset-4 rounded-full bg-gradient-to-tr from-violet-500/30 via-indigo-500/20 to-sky-400/30 blur-2xl"
+                aria-hidden
+              />
+              <div className="relative h-56 w-56 overflow-hidden rounded-full border border-white/10 bg-secondary sm:h-72 sm:w-72 lg:h-80 lg:w-80">
                 <Image
-                  src={
-                    "/assets/perfil.jpg"
-                  }
-                  alt="profile franco stoll"
-                  width={400}
-                  height={400}
-                  className="rounded-full shadow-lg ring-4 ring-indigo-400 dark:ring-indigo-600"
+                  src="/assets/perfil.jpg"
+                  alt="Franco Stoll"
+                  fill
+                  sizes="(max-width: 1024px) 18rem, 20rem"
+                  className="object-cover"
+                  priority
                 />
-              </motion.div>
-            </motion.div>
-          </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </div>
     </section>
