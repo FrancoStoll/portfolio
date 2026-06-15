@@ -2,7 +2,8 @@
 
 import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import { Magnetic } from "./Magnetic";
 
 const SOCIALS = [
   { href: "https://github.com/francostoll", label: "GitHub", Icon: Github },
@@ -16,7 +17,7 @@ const SOCIALS = [
 
 const STATS = [
   { value: "+3", label: "Años construyendo" },
-  { value: "6+", label: "Proyectos enviados" },
+  { value: "7+", label: "Proyectos enviados" },
   { value: "Full Stack", label: "Frontend & Backend" },
 ];
 
@@ -24,16 +25,32 @@ const scrollTo = (id: string) =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
 export const HeroSection = () => {
+  const reduce = useReducedMotion();
+
   return (
     <section
       id="home"
       className="relative overflow-hidden"
     >
-      {/* Fondo: grilla + resplandor */}
+      {/* Fondo: grilla + resplandores animados */}
       <div className="pointer-events-none absolute inset-0 grid-bg" aria-hidden />
-      <div
-        className="pointer-events-none absolute left-1/2 top-0 -z-0 h-[400px] w-[600px] -translate-x-1/2 rounded-full bg-primary/20 blur-[120px]"
+      <motion.div
+        className="pointer-events-none absolute -left-24 top-4 h-72 w-72 rounded-full bg-violet-500/20 blur-[110px]"
         aria-hidden
+        animate={reduce ? undefined : { x: [0, 50, 0], y: [0, 30, 0] }}
+        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="pointer-events-none absolute left-1/2 top-0 h-[360px] w-[520px] -translate-x-1/2 rounded-full bg-indigo-500/20 blur-[120px]"
+        aria-hidden
+        animate={reduce ? undefined : { scale: [1, 1.12, 1], opacity: [0.8, 1, 0.8] }}
+        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="pointer-events-none absolute right-0 top-40 h-80 w-80 rounded-full bg-sky-400/15 blur-[120px]"
+        aria-hidden
+        animate={reduce ? undefined : { x: [0, -40, 0], y: [0, 40, 0] }}
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
       />
 
       <div className="container relative flex min-h-[calc(100svh-4rem)] flex-col justify-center py-16">
@@ -72,13 +89,15 @@ export const HeroSection = () => {
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
-              <button
-                onClick={() => scrollTo("contact")}
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:-translate-y-0.5 hover:glow-accent"
-              >
-                <Mail className="h-4 w-4" />
-                Contáctame
-              </button>
+              <Magnetic>
+                <button
+                  onClick={() => scrollTo("contact")}
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-sm transition-all hover:glow-accent"
+                >
+                  <Mail className="h-4 w-4" />
+                  Contáctame
+                </button>
+              </Magnetic>
               <button
                 onClick={() => scrollTo("projects")}
                 className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/40 px-6 py-3 text-sm font-semibold text-foreground transition-colors hover:bg-secondary"
