@@ -18,15 +18,23 @@ type Project = {
 
 const PROJECTS: Project[] = [
   {
+    title: "FederalTactics · TFT",
+    description:
+      "Guía meta para Teamfight Tactics: composiciones por tier, fichas de campeones, ítems y constructor de equipos.",
+    longDescription:
+      "App completa para Teamfight Tactics con composiciones meta organizadas por tier (S/A/B), fichas detalladas de campeones e ítems, filtros por estrategia (Fast 8, Reroll, Slow Roll, etc.) y un constructor de equipos interactivo. Construida con Next.js, Supabase y Framer Motion.",
+    image: "/assets/tft.png",
+    tags: ["Next.js", "Supabase", "Framer Motion", "TypeScript"],
+    demo: "https://tftpage.vercel.app/",
+    featured: true,
+  },
+  {
     title: "CartaYa · IA",
     description:
       "Generador de cartas de presentación con IA: pegás una oferta y tu perfil, y Claude redacta una carta personalizada.",
-    longDescription:
-      "App de IA que genera cartas de presentación personalizadas. Pegás una oferta de trabajo y tu perfil, elegís tono e idioma, y Claude redacta la carta en streaming (aparece en vivo). Construida con Next.js y la API de Claude, con la API key protegida del lado del servidor.",
     image: "/assets/cartaya.png",
     tags: ["Next.js", "Claude API", "TypeScript", "Streaming"],
     code: "https://github.com/FrancoStoll/ai-cover-letter",
-    featured: true,
   },
   {
     title: "PerfilYa",
